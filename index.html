@@ -42,7 +42,7 @@
             justify-content: center;
             align-items: center;
             overflow-x: hidden;
-            background: url('C:/Users/myubileum001/Documents/Michael/Project/OMK Fest/img/background.png') no-repeat center center fixed;
+            background: url('img/background.png') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -51,7 +51,7 @@
             max-width: 550px;
             padding: 2rem;
             border-radius: 8px;
-            background: url('C:/Users/myubileum001/Documents/Michael/Project/OMK Fest/img/background.png') no-repeat center center;
+            background: url('img/background.png') no-repeat center center;
             background-size: cover;
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 32px rgba(65, 193, 207, 0.2);
@@ -252,7 +252,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('C:/Users/myubileum001/Documents/Michael/Project/OMK Fest/img/logo.gif') no-repeat center;
+            background: url('img/logo.gif') no-repeat center;
             background-size: contain;
             opacity: 0.7;
             animation: glitchEffect 2.5s infinite;
@@ -430,20 +430,20 @@
         <div class="countdown">05:00</div>
         
         <div class="logo">
-            <img src="C:/Users/myubileum001/Documents/Michael/Project/OMK Fest/img/logo.gif" alt="Coconut Game Logo">
+            <img src="img/logo.gif" alt="Coconut Game Logo">
         </div>
         
         <h1>Player Application</h1>
         
         <div class="squid-symbols">
             <div class="symbol">
-                <img src="C:\Users\myubileum001\Documents\Michael\Project\OMK Fest\img\segitiga.png" alt="">
+                <img src="img/segitiga.png" alt="">
             </div>
             <div class="symbol">
-                <img src="C:\Users\myubileum001\Documents\Michael\Project\OMK Fest\img\salib.png" alt="">
+                <img src="img/salib.png" alt="">
             </div>
             <div class="symbol">
-                <img src="C:\Users\myubileum001\Documents\Michael\Project\OMK Fest\img\bulat.png" alt="">
+                <img src="img/bulat.png" alt="">
             </div>
         </div>
         
@@ -597,37 +597,28 @@
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwW7oPYpO-sNMFChomHT2MiuQHADozBl5uj5JOee6KI2tsMeBbUPkDb14EXSLIp-Tikvg/exec';
-        const form = document.getElementById('registrationForm');
-    
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-    
-            const formData = {
-                nama: form.nama.value,
-                gender: form.gender.value,
-                usia: form.usia.value,
-                nomorWA: form.nomorWA.value,
-                agama: form.agama.value,
-                paroki: form.paroki.value,
-            };
-    
-            fetch(scriptURL, {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                if (!response.ok) throw new Error("Gagal");
-                document.getElementById('formContainer').style.display = 'none';
-                document.getElementById('confirmationContainer').style.display = 'block';
-            })
-            .catch(error => {
-                alert('Gagal mengirim data: ' + error.message);
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwW7oPYpO-sNMFChomHT2MiuQHADozBl5uj5JOee6KI2tsMeBbUPkDb14EXSLIp-Tikvg/exec';
+            const form = document.getElementById('registrationForm');
+        
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error("Gagal");
+                    document.getElementById('formContainer').style.display = 'none';
+                    document.getElementById('confirmationContainer').style.display = 'block';
+                })
+                .catch(error => {
+                    alert('Gagal mengirim data: ' + error.message);
+                });
             });
-        });
+
     
         // Countdown timer
         let time = 300;
