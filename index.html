@@ -456,7 +456,19 @@
         <div class="shape"></div>
     </div>
     
-    <div class="container" id="formContainer">
+    
+<div id="introContainer" class="container">
+  <h1>Join The Final Chapter:<br>Ivory Coconut Unity</h1>
+  <p>Welcome, Players!<br><br>
+  Secure your spot in the <strong>COCONUT GAME</strong>—an immersive, high-stakes experience unfolding on <strong>May 24th, 2025</strong>.<br>
+  Spaces are strictly limited, so act fast! Complete the upcoming form with the correct details to submit your application.</p>
+  <p>The soldiers will personally review each submission, and successful applicants will receive a direct invitation to confirm their registration.
+  No mistakes, no second chances—ensure every detail is accurate.</p>
+  <p style="margin-top: 1.5rem; font-weight: bold;">Will you make the cut?</p>
+  <button id="startButton">Start Application</button>
+</div>
+
+<div class="container" id="formContainer" style="display:none;">
         <div class="countdown">05:00</div>
         
         <div class="logo">
@@ -626,6 +638,12 @@
             }
             time--;
         }, 1000);
-    </script>    
+    
+document.getElementById('startButton').addEventListener('click', function() {
+  document.getElementById('introContainer').style.display = 'none';
+  document.getElementById('formContainer').style.display = 'block';
+});
+
+</script>    
 </body>
 </html>
